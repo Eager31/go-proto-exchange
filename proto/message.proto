@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package cyberpunkmp;
+
+option go_package = "github.com/tonnom/cyberpunkmp/proto";
+
+message Handshake {
+  string playerId = 1;
+  string playerName = 2;
+}
+
+message PlayerUpdate {
+  string playerId = 1;
+  float x = 2;
+  float y = 3;
+  float z = 4;
+}
+
+message ClientMessage {
+  oneof payload {
+    Handshake handshake = 1;
+    PlayerUpdate playerUpdate = 2;
+  }
+}
+
+message ServerMessage {
+  string serverMessage = 1;
+}
